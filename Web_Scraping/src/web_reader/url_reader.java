@@ -23,8 +23,7 @@ public class url_reader
  * Constructor
  * Purpose: Initializes the url_reader object
  * 
- * @param  String - the webpage URL as a string
- * @return none
+ * @param  url_string - the webpage URL as a string
  * @author johnherrmann
  ******************************************************************************/ 
     public url_reader(String url_string)

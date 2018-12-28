@@ -61,6 +61,17 @@ public boolean processJob(String line)
    }
    return false;
 }
+/******************************************************************************
+ * Method  : printJob
+ * Purpose : prints the job information in CSV format
+ * 
+ ******************************************************************************/
+public String printJob()
+{
+    return String.format("%s|%s|%s|%s|%s|%s\n",this.job_title, this.company, this.jobID,
+                                    this.location_city, this.location_state,
+                                    this.location_country);
+}
 
 
 
@@ -87,7 +98,8 @@ public boolean processJob(String line)
         if(regMatch.wasPatternFound())
         {
            company = regMatch.outputPatternsFound.get(0).replace("cmp:", "");
-           company = company.replace("'", "");
+           company = company.replaceAll("'", "");
+           company = company.replaceAll("\\|", "");
            return company;
         }
         return "Not Provided";
@@ -135,7 +147,8 @@ public boolean processJob(String line)
         if(regMatch.wasPatternFound())
         {
            title = regMatch.outputPatternsFound.get(0).replace("title:", "");
-           title = title.replace("'", "");
+           title = title.replaceAll("'", "");
+           title = title.replaceAll("\\|", "");
            return title;
         }
         return "Not Provided";
@@ -184,7 +197,8 @@ public boolean processJob(String line)
         if(regMatch.wasPatternFound())
         {
            city = regMatch.outputPatternsFound.get(0).replace("city:", "");
-           city = city.replace("'", "");
+           city = city.replaceAll("'", "");
+           city= city.replaceAll("\\|", "");
            return city;
         }
         return "Not Provided";
@@ -242,6 +256,7 @@ public boolean processJob(String line)
                 temp = temp.replaceAll(",", "");
                 temp = temp.replaceAll("'", "");
                 temp = temp.replaceAll("\\s", "");
+                temp = temp.replaceAll("\\|", "");
                 return temp;
             }
             return temp;
@@ -293,7 +308,8 @@ public boolean processJob(String line)
         if(regMatch.wasPatternFound())
         {
            country = regMatch.outputPatternsFound.get(0).replace("country:", "");
-           country = country.replace("'", "");
+           country = country.replaceAll("'", "");
+           country = country.replaceAll("\\|", "");
            return country;
         }
         return "Not Provided";
@@ -342,7 +358,8 @@ public boolean processJob(String line)
         if(regMatch.wasPatternFound())
         {
            jobID = regMatch.outputPatternsFound.get(0).replace("jk:", "");
-           jobID = jobID.replace("'", "");
+           jobID = jobID.replaceAll("'", "");
+           jobID = jobID.replaceAll("\\|", "");
            return jobID;
         }
         return "Not Provided";
