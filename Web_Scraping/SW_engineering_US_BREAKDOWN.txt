@@ -1,0 +1,67 @@
+loc:'United States'|10216
+GA|4810
+CA|65443
+AZ|1358
+AL|888
+AK|29
+AR|115
+DE|451
+CO|3831
+DC|1069
+CT|1034
+FL|1633
+TX|9499
+MA|7524
+IL|11182
+HI|165
+ID|444
+IA|1337
+IN|542
+LA|869
+KY|327
+KS|467
+NY|19894
+NJ|5121
+MI|3710
+MD|1967
+ME|349
+MO|1277
+MN|2513
+NC|3483
+MS|779
+NH|261
+NE|578
+ND|139
+NV|1359
+NM|199
+OH|2468
+PR|838
+OR|3342
+OK|414
+PA|1319
+TN|981
+RI|1452
+SD|720
+SC|225
+loc:'Remote'|2756
+WA|14003
+UT|1942
+VA|1096
+loc:'Home Based'|417
+loc:'California'|96
+WI|731
+WY|16
+loc:'Georgia'|2
+loc:'Colorado'|84
+loc:'Illinois'|158
+loc:'Indiana'|82
+loc:'Nevada'|1
+loc:'Kansas'|42
+loc:'Michigan'|117
+loc:'Minnesota'|309
+loc:'New York State'|1307
+loc:'New Jersey'|102
+loc:'North Carolina'|14
+loc:'Rhode Island'|958
+loc:'Tennessee'|7
+loc:'Virginia'|99

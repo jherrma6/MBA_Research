@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import regex.*;
 import java.util.regex.*;
 import web_reader.url_reader;
-import java.util.concurrent.TimeUnit;
+import search_sort_tree.*;
+
 /**
  *
  * @author johnherrmann
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class indeed 
 {
     public ArrayList<indeed_job> jobList;
+    public data_node_tree        tree;
     public int                   num_jobs;
     public int                   current_page;
     public int                   jobs_found;
@@ -31,6 +33,8 @@ public class indeed
       this.jobs_found = 0;                      //At start, no jobs found
                                                 //At start, empty jobs list
       this.jobList = new ArrayList<indeed_job>(0);
+      
+      this.tree = new data_node_tree();
                                                 //create URL reader object
       this.source_file = new url_reader(url);
       this.source_file.open(1024);              //start transfer of contents
@@ -46,19 +50,18 @@ public class indeed
                                                 //Determine the number of available jobs
       this.num_jobs = numJobs(find_num_jobs_file);
                                                 //Print number of available jobs
-      System.out.println(this.num_jobs);
+      System.out.println("Total Number of Jobs Found "+this.num_jobs);
                                                 
       
       int web_page_counter = 0;
       String url_previous = "=0";
       String url_next     = "=0";
       
-      
-      while(this.jobs_found < 500)
+      while(this.jobs_found < this.num_jobs*(.95))
       {
        
         url = url.replace(url_previous, url_next);
-        System.out.println(url);
+        //System.out.println(url);
         url_reader job_search = new url_reader(url);
         job_search.open(1024);
         find_jobs(job_search);
@@ -159,11 +162,18 @@ private void find_jobs(url_reader input)
             job.processJob(line);
             this.jobList.add(job);
             this.jobs_found++;
+            this.tree.insert(job, job.getState());
         }
-        
-        line = input.readLine();
+            line = input.readLine();
    }
-       
+}
+/*******************************************************************************
+ * Method  : printTree
+ * Purpose : prints all of the avaliable jobs to screen 
+ ******************************************************************************/
+public void printTree(String location, boolean append)
+{
+    this.tree.printKeys(location, append);
 }
 /*******************************************************************************
  * Method  : printJobs
